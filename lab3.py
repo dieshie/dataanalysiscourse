@@ -1,7 +1,6 @@
 from spyre import server
 import pandas as pd
 import matplotlib.pyplot as plt
-import math
 
 class StockExample(server.App):
     title = "NOAA data dropdown"
@@ -140,16 +139,11 @@ class StockExample(server.App):
         region_name = self.getRegionName(region)
         week_interval = params['week_interval']
         start_week, end_week = map(int, week_interval.split('-'))
-        
-        year_int = int(year)
-        year_decimal = math.modf(float(year))[0]
-        if year_decimal == 0.0:
-            year_str = f"{year_int} рік"
 
         plt_obj = df.plot(x='week', y=data_type, legend=False, color='red')
         plt_obj.set_ylabel(y_label)
         plt_obj.set_xlabel("Тижні")
-        plt_obj.set_title(f"{data_type} графік для {region_name}, {year_str}, {start_week}-{end_week} тижні")
+        plt_obj.set_title(f"{data_type} графік для {region_name}, {int(year)} рік, {start_week}-{end_week} тижні")
         plot = plt_obj.get_figure()
         return plot
 
