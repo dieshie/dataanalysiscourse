@@ -140,7 +140,7 @@ class StockExample(server.App):
         week_interval = params['week_interval']
         start_week, end_week = map(int, week_interval.split('-'))
 
-        plt_obj = df.plot(x='week', y=data_type, legend=False, color='red')
+        plt_obj = df.plot(x='week', y=data_type, legend=False, color='red', marker='*')
         plt_obj.set_ylabel(y_label)
         plt_obj.set_xlabel("Тижні")
         plt_obj.set_title(f"{data_type} графік для {region_name}, {int(year)} рік, {start_week}-{end_week} тижні")
