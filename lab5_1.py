@@ -13,7 +13,7 @@ initial_cutoff_frequency = 5.0
 initial_filter_order = 4
 
 #генеруємо початкові дані
-t = np.linspace(0, 10, 1000)
+t = np.linspace(0, 1, 1000)
 
 #зміння для зберігання значення шуму
 noise = None
