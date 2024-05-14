@@ -39,7 +39,7 @@ def generate_noise():
     global noise
     noise_mean = s_noise_mean.value
     noise_covariance = s_noise_covariance.value
-    noise = noise_mean * np.random.normal(0, np.sqrt(noise_covariance), t.shape)
+    noise = np.random.normal(noise_mean, np.sqrt(noise_covariance), t.shape)
 
 #оновлення графіку відповідно до змінених даних
 def update_plot(attr, old, new):
@@ -88,8 +88,8 @@ s_amplitude = Slider (title='Aмплiтyдa', start=0.1, end=10.0, value=initial
 s_frequency = Slider (title='Частота', start=0.1, end=10.0, value=initial_frequency, step=0.05)
 s_phase = Slider (title='Фаза', start=0, end= 2 * np.pi, value=initial_phase, step=0.05)
 s_noise_mean = Slider (title='Середнє значення шуму', start=-1.0, end=1.0, value=initial_noise_mean, step=0.05)
-s_noise_covariance = Slider (title='Дисперсія шумy', start=0.0, end=1.0, value=initial_noise_covariance, step=0.05)
-s_cutoff_frequency = Slider (title='Чacтoта зpiзy', start=0.1, end=20.0, value=initial_cutoff_frequency, step=0.05)
+s_noise_covariance = Slider (title='Дисперсія шумy', start=0.0, end=0.5, value=initial_noise_covariance, step=0.025)
+s_cutoff_frequency = Slider (title='Чacтoта зpiзy', start=0.1, end=50.0, value=initial_cutoff_frequency, step=0.05)
 s_filter_order = Slider (title='Пopядок фільтру', start=1, end=10, value=initial_filter_order, step=1)
 
 picker = ColorPicker(title="Колір графіку з шумом")
