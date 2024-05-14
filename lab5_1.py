@@ -23,7 +23,7 @@ def generate_noise():
     global noise
     noise_mean = s_noise_mean.val
     noise_covariance = s_noise_covariance.val
-    noise = noise_mean * np.random.normal(0, np.sqrt(noise_covariance), t.shape)
+    noise = np.random.normal(noise_mean, np.sqrt(noise_covariance), t.shape)
 
 #оновлення графіку відповідно до змінених даних
 def update_plot(val=None):
@@ -79,7 +79,7 @@ s_frequency = Slider(ax_frequency, 'Частота', 0.1, 10.0, valinit=initial_
 s_phase = Slider(ax_phase, 'Фаза', 0, 2*np.pi, valinit=initial_phase)
 s_noise_mean = Slider(ax_noise_mean, 'Середнє значення шуму', -1.0, 1.0, valinit=initial_noise_mean)
 s_noise_covariance = Slider(ax_noise_covariance, 'Дисперсія шуму', 0.01, 1.0, valinit=initial_noise_covariance)
-s_cutoff_frequency = Slider(ax_cutoff_frequency, 'Частота зрізу', 0.1, 10.0, valinit=initial_cutoff_frequency)
+s_cutoff_frequency = Slider(ax_cutoff_frequency, 'Частота зрізу', 0.1, 50.0, valinit=initial_cutoff_frequency)
 s_filter_order = Slider(ax_filter_order, 'Порядок фільтра', 1, 10, valinit=initial_filter_order, valstep=1)
 checkbox = CheckButtons(ax_checkbox, ['Показати шум'], [True])
 reset_button = Button(ax_reset_button, 'Скинути', color='lightgoldenrodyellow', hovercolor='0.975')
